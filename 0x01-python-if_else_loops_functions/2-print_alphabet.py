@@ -1,2 +1,3 @@
 #!/usr/bin/python3
-print("abcdefghijklmnopqrstuvwxyz", end='')
+for i in range(26):
+    print(str.format(chr(i + 97)), end='')
