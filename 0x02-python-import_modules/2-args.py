@@ -2,7 +2,8 @@
 if __name__ == '__main__':
     from sys import argv
     ac = len(argv) - 1
-    print("{:d} argument{}{}".format(ac, "" if ac == 1 else "s", ":" if ac else "."))
+    print("{:d} argument{}{}".format
+          (ac, "" if ac == 1 else "s", ":" if ac else "."))
 
     if ac:
         for i, av in enumerate(argv, 0):
