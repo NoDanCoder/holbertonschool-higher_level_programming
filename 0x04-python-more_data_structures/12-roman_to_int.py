@@ -5,7 +5,7 @@ def roman_to_int(roman_string):
     """
     num = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
     word = list(reversed(roman_string))
-    add = num[word[0]]
+    add = num[word[0]] if word else 0
     for i, n in zip(word, word[1:]):
         add += num[n] * (1 if num[i] <= num[n] else -1)
     return add
