@@ -5,4 +5,4 @@ def print_sorted_dictionary(a_dictionary):
     first parent level only
     """
     if a_dictionary:
-        [print(k, "\b:", v) for k, v in sorted(a_dictionary.items())]
+        [print("{}: {}".format(k, v)) for k, v in sorted(a_dictionary.items())]
