@@ -3,5 +3,5 @@ def print_reversed_list_integer(my_list=[]):
     """
     function that prints all integers of a list, in reverse order
     """
-    for x in reversed(my_list):
-        print("{:d}".format(x))
+    if my_list and all(my_list):
+        [print("{:d}".format(x)) for x in reversed(my_list)]
