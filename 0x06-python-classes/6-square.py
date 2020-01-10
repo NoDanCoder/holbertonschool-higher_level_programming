@@ -12,6 +12,7 @@ class Square:
 
         if type(position) != tuple or \
            not all(type(x) == int for x in position) or \
+           not all(x >= 0 for x in position) or \
            len(position) != 2:
             raise TypeError("position must be a tuple of 2 positive integers")
         self._Square__position = position
@@ -39,7 +40,7 @@ class Square:
 
     @property
     def position(self):
-        """ retrieve the size of Square obj """
+        """ retrieve the position of Square obj """
         return self._Square__position
 
     @position.setter
