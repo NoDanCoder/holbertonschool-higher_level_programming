@@ -27,9 +27,10 @@ class Node:
     @next_node.setter
     def next_node(self, value):
         """ set the next_node of Node obj """
-        if type(value) != Node and value != None:
+        if type(value) != Node and value:
             raise TypeError("next_node must be a Node object")
         self._Node__next_node = value
+
 
 class SinglyLinkedList:
     """ defines a singly linked list """
@@ -43,10 +44,10 @@ class SinglyLinkedList:
         inserts a new Node into the correct sorted position
         in the list (increasing order)
         """
-        if self.head == None:
+        if self.head is None:
             self.head = Node(value)
             return
-        
+
         new = Node(value, self.head)
         current = new
         while current.next_node and current.next_node.data < value:
