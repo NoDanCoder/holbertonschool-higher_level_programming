@@ -1,0 +1,135 @@
+=================================
+Doctests for say_my_name function
+=================================
+
+
+``def say_my_name(first_name, last_name="")``
+
+This function prints a phrase with two inputs (first_name and last_name),
+his inputs should be of type str, otherwise
+this function will raise a TypeError with his respective message,
+if not problem is found it will prints his repective phrase.
+Remember that if last_name doesn't explicit assigned it will take a value of ""
+
+
+To see how it works let's import the function from his module first:
+====================================================================
+
+    >>> say_my_name = __import__('3-say_my_name').say_my_name
+
+
+And now we check cases where it works:
+======================================
+
+- Strings
+
+    >>> say_my_name("Pepito", "Perez")
+    My name is Pepito Perez
+
+    >>> say_my_name("Pepito")
+    My name is Pepito 
+
+    >>> say_my_name("", "Perez")
+    My name is  Perez
+
+    >>> say_my_name("")
+    My name is  
+
+    >>> say_my_name(str("98"), "Holberton")
+    My name is 98 Holberton
+
+
+Now let's check the edge cases:
+===============================
+
+
+Type errors
+===========
+
+- Lists
+
+    >>> say_my_name(["Pepito"])
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
+
+    >>> say_my_name(["Pepito"], "Perez")
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
+
+    >>> say_my_name("Pepito", ["Perez"])
+    Traceback (most recent call last):
+        ...
+    TypeError: last_name must be a string
+
+    >>> say_my_name(["pepito", "perez"])
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
+
+- Dictionaries
+
+    >>> say_my_name({"k1": "Pepito"})
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
+
+    >>> say_my_name({"k1": "Pepito"}, "Perez")
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
+
+    >>> say_my_name("Pepito", {"k1": "Perez"})
+    Traceback (most recent call last):
+        ...
+    TypeError: last_name must be a string
+
+    >>> say_my_name({"k1": "pepito", "k2": "perez"})
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
+
+- Tuples
+
+    >>> say_my_name(("Pepito",))
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
+
+    >>> say_my_name(("Pepito",), "Perez")
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
+
+    >>> say_my_name("Pepito", ("Perez",))
+    Traceback (most recent call last):
+        ...
+    TypeError: last_name must be a string
+
+    >>> say_my_name(("pepito", "perez"))
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
+
+- Sets
+
+    >>> say_my_name({"Pepito"})
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
+
+    >>> say_my_name({"Pepito"}, "Perez")
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
+
+    >>> say_my_name("Pepito", {"Perez"})
+    Traceback (most recent call last):
+        ...
+    TypeError: last_name must be a string
+
+    >>> say_my_name({"pepito", "perez"})
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
