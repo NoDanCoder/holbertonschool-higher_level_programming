@@ -15,3 +15,7 @@ class Square(Rectangle):
     def area(self):
         """ inherit get area function """
         return super().area()
+
+    def __str__(self):
+        """ string format class """
+        return "[Square] {0:d}/{0:d}".format(self._Square__size)
