@@ -74,3 +74,19 @@ class Rectangle(Base):
     def display(self):
         """ prints in stdout the Rectangle instance with the character # """
         print("\n".join(["#" * self.width] * self.height))
+
+# override __str__ metod
+
+    @property
+    def getType(self):
+        """ retrieves self type """
+        return self.__class__.__name__
+
+    def f(self, string):
+        """ sumulate f-strings available from python 3.6 """
+        return string.format(**locals())
+
+    def __str__(self):
+        """ modify instance str output """
+        return self.f("[{self.getType}] ({self.id}) {self.x}/{self.y} - "
+                      "{self.width}/{self.height}")
