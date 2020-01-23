@@ -2,6 +2,7 @@
 """ import local modules """
 from models.base import Base
 
+
 class Rectangle(Base):
     """ Rectangle class struct """
     def __init__(self, width, height, x=0, y=0, id=None):
@@ -34,7 +35,7 @@ class Rectangle(Base):
     @property
     def height(self):
         """ height getter """
-        return self.__width
+        return self.__height
 
     @height.setter
     def height(self, value):
@@ -63,3 +64,9 @@ class Rectangle(Base):
         """ y setter """
         self.checkInp("y", value, ">=")
         self.__y = value
+
+# modifiers methods
+
+    def area(self):
+        """ returns the area value of the Rectangle instance """
+        return self.width * self.height
