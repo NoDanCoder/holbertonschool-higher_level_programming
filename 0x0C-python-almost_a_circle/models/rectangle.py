@@ -73,7 +73,8 @@ class Rectangle(Base):
 
     def display(self):
         """ prints in stdout the Rectangle instance with the character # """
-        print("\n".join(["#" * self.width] * self.height))
+        print("\n" * self.y, end="")
+        print("\n".join([" " * self.x + "#" * self.width] * self.height))
 
 # override __str__ metod
 
