@@ -26,3 +26,11 @@ class Square(Rectangle):
         """ modify instance str output """
         return self.f("[{self.getType}] ({self.id}) {self.x}/{self.y} - "
                       "{self.width}")
+
+# get properties
+
+    def to_dictionary(self):
+        """ returns the dictionary representation of a Rectangle """
+        dic = super().to_dictionary()
+        dic.update({"size": self.size})
+        return {k:v for k, v in dic.items() if k not in ["width", "height"]}

@@ -78,7 +78,7 @@ class Rectangle(Base):
             for k, v in kwargs.items():
                 if k == "id":
                     super().__init__(v)
-                    break
+                    continue
                 setattr(self, k, v)
 
 # modifiers methods
@@ -107,3 +107,9 @@ class Rectangle(Base):
         """ modify instance str output """
         return self.f("[{self.getType}] ({self.id}) {self.x}/{self.y} - "
                       "{self.width}/{self.height}")
+
+# get properties
+
+    def to_dictionary(self):
+        """ returns the dictionary representation of a Rectangle """
+        return {k.split("_")[-1]: v for k, v in self.__dict__.items()}
