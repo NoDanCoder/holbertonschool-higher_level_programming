@@ -65,6 +65,15 @@ class Rectangle(Base):
         self.checkInp("y", value, ">=")
         self.__y = value
 
+# update method
+
+    def update(self, *args):
+        """ Update the class Rectangle """
+        prop = [self.id, self.width, self.height, self.x, self.y]
+        prop[:len(args)] = args
+        prop.append(prop.pop(0))
+        self.__init__(*prop)
+
 # modifiers methods
 
     def area(self):
