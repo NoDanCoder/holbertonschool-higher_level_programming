@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ import local modules """
 from models.base import Base
+from inspect import signature as sig
 
 
 class Rectangle(Base):
@@ -67,12 +68,18 @@ class Rectangle(Base):
 
 # update method
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """ Update the class Rectangle """
-        prop = [self.id, self.width, self.height, self.x, self.y]
-        prop[:len(args)] = args
-        prop.append(prop.pop(0))
-        self.__init__(*prop)
+        if args:
+            super().__init__(args[0])
+            for i, k in zip(list(sig(self.__init__).parameters)[:-1], args[1:]):
+                setattr(self, i, k)
+        elif kwargs:
+            for k, v in kwargs.items():
+                if k == "id":
+                    super().__init__(v)
+                    break
+                setattr(self, k, v)
 
 # modifiers methods
 
