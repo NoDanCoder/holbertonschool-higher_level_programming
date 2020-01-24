@@ -9,6 +9,17 @@ class Square(Rectangle):
         """ Square class constructor """
         super().__init__(size, size, x, y, id)
 
+    @property
+    def size(self):
+        """ size getter """
+        return self.width
+
+    @size.setter
+    def size(self, value):
+        """ size setter """
+        self.width = value
+        self.height = value
+
 # override __str__ metod
 
     def __str__(self):

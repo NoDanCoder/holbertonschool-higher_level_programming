@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ import local modules """
 from models.base import Base
-from inspect import signature as sig
+from inspect import signature as sg
 
 
 class Rectangle(Base):
@@ -72,7 +72,7 @@ class Rectangle(Base):
         """ Update the class Rectangle """
         if args:
             super().__init__(args[0])
-            for i, k in zip(list(sig(self.__init__).parameters)[:-1], args[1:]):
+            for i, k in zip(list(sg(self.__init__).parameters)[:-1], args[1:]):
                 setattr(self, i, k)
         elif kwargs:
             for k, v in kwargs.items():
