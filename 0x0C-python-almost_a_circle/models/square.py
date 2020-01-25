@@ -33,4 +33,4 @@ class Square(Rectangle):
         """ returns the dictionary representation of a Rectangle """
         dic = super().to_dictionary()
         dic.update({"size": self.size})
-        return {k:v for k, v in dic.items() if k not in ["width", "height"]}
+        return {k: v for k, v in dic.items() if k not in ["width", "height"]}
