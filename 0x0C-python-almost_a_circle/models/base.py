@@ -27,3 +27,8 @@ class Base:
         list_objs = [x.to_dictionary() for x in list_objs] if list_objs else []
         with open(outFile, "w", encoding="utf-8") as f:
             f.write(cls.to_json_string(list_objs))
+
+    @staticmethod
+    def from_json_string(json_string):
+        """ returns the list of the JSON string representation json_string """
+        return json.loads(json_string) if json_string else []
