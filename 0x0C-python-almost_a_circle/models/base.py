@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ import JSON representation """
 import json
+from inspect import signature as sg
 
 
 class Base:
@@ -32,3 +33,11 @@ class Base:
     def from_json_string(json_string):
         """ returns the list of the JSON string representation json_string """
         return json.loads(json_string) if json_string else []
+
+    @classmethod
+    def create(cls, **dictionary):
+        """ returns an instance with all attributes already set """
+        parameters = [k for k, v in dict(sg(cls).parameters).items()]
+        dum = cls(*[1 for x in parameters if str(sg(cls).parameters[x]) == x])
+        dum.update(**dictionary)
+        return dum
