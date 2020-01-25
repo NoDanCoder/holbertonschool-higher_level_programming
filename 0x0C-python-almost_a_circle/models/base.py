@@ -2,6 +2,7 @@
 """ import JSON representation """
 import json
 from inspect import signature as sg
+from os.path import isfile
 
 
 class Base:
@@ -41,3 +42,13 @@ class Base:
         dum = cls(*[1 for x in parameters if str(sg(cls).parameters[x]) == x])
         dum.update(**dictionary)
         return dum
+
+    @classmethod
+    def load_from_file(cls):
+        """ returns a list of instances writen in JSON """
+        inpFile = cls.__name__ + ".json"
+        if isfile(inpFile):
+            with open(inpFile, "r", encoding="utf-8") as f:
+                buff = cls.from_json_string(f.read())
+                return [cls.create(**x) for x in buff]
+        return []
