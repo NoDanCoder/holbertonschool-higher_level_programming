@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ import JSON representation """
 import json
+import csv
 from inspect import signature as sg
 from os.path import isfile
 
@@ -52,3 +53,23 @@ class Base:
                 buff = cls.from_json_string(f.read())
                 return [cls.create(**x) for x in buff]
         return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """ convert obj into csv data """
+        outFile = cls.__name__ + ".csv"
+        list_objs = [x.to_dictionary() for x in list_objs] if list_objs else []
+        with open(outFile, "w", encoding="utf-8") as f:
+            writer = csv.DictWriter(f, fieldnames=[x for x in list_objs[0].keys()])
+            writer.writeheader()
+            [writer.writerow(x) for x in list_objs]
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """ load csv file """
+        inpFile = cls.__name__ + ".csv"
+        if isfile(inpFile):
+            with open(inpFile, "r", encoding="utf-8") as f:
+                reader = csv.DictReader(f)
+                reader = [{k: int(v) for k, v in dict(x).items()} for x in reader]
+                return [cls.create(**x) for x in reader]
