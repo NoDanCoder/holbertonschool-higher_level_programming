@@ -4,6 +4,8 @@ import json
 import csv
 from inspect import signature as sg
 from os.path import isfile
+import turtle
+from random import randint
 
 
 class Base:
@@ -73,3 +75,38 @@ class Base:
                 reader = csv.DictReader(f)
                 reader = [{k: int(v) for k, v in dict(x).items()} for x in reader]
                 return [cls.create(**x) for x in reader]
+
+# draw turtle
+
+    @staticmethod
+    def makeDraw(dictObj, obj):
+        """ make a draw of instance in turtle """
+        tim = turtle.Turtle()
+        tim.width(5)
+        tim.color("#%06x" % randint(0, 0xFFFFFF))
+        tim.penup()
+        tim.goto(dictObj["x"], dictObj["y"])
+        tim.pendown()
+        tim.begin_fill()
+        if obj is "Squ":
+            for i in range(4):
+                tim.forward(dictObj["size"])
+                tim.right(90)
+        elif obj is "Rect":
+            for i in range(2):
+                tim.forward(dictObj["width"])
+                tim.right(90)
+                tim.forward(dictObj["height"])
+                tim.right(90)
+        tim.end_fill()
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """ opens a window and draws all the Rectangles and Squares """
+        list_rectangles = [x.to_dictionary() for x in list_rectangles] if list_rectangles else []
+        list_squares = [x.to_dictionary() for x in list_squares] if list_squares else []
+        for x in list_rectangles:
+            Base.makeDraw(x, "Rect")
+        for x in list_squares:
+            Base.makeDraw(x, "Squ")
+        turtle.done()
