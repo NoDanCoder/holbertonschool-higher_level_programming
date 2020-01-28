@@ -62,7 +62,8 @@ class Base:
         outFile = cls.__name__ + ".csv"
         list_objs = [x.to_dictionary() for x in list_objs] if list_objs else []
         with open(outFile, "w", encoding="utf-8") as f:
-            writer = csv.DictWriter(f, fieldnames=[x for x in list_objs[0].keys()])
+            writer = csv.DictWriter(f, fieldnames=[x for x in
+                                                   list_objs[0].keys()])
             writer.writeheader()
             [writer.writerow(x) for x in list_objs]
 
@@ -73,7 +74,8 @@ class Base:
         if isfile(inpFile):
             with open(inpFile, "r", encoding="utf-8") as f:
                 reader = csv.DictReader(f)
-                reader = [{k: int(v) for k, v in dict(x).items()} for x in reader]
+                reader = [{k: int(v) for k, v in dict(x).items()}
+                          for x in reader]
                 return [cls.create(**x) for x in reader]
 
 # draw turtle
@@ -103,8 +105,10 @@ class Base:
     @staticmethod
     def draw(list_rectangles, list_squares):
         """ opens a window and draws all the Rectangles and Squares """
-        list_rectangles = [x.to_dictionary() for x in list_rectangles] if list_rectangles else []
-        list_squares = [x.to_dictionary() for x in list_squares] if list_squares else []
+        list_rectangles = ([x.to_dictionary() for x in list_rectangles]
+                           if list_rectangles else [])
+        list_squares = ([x.to_dictionary() for x in list_squares]
+                        if list_squares else [])
         for x in list_rectangles:
             Base.makeDraw(x, "Rect")
         for x in list_squares:
