@@ -8,11 +8,7 @@ if __name__ == '__main__':
     with urllib.request.urlopen(url) as response:
         body = response.read()
 
-        display = {'type': type(body),
-                   'content': body,
-                   'utf8 content': body.decode('utf-8')}
-
         print('Body response:')
-
-        for k, v in display.items():
-            print('\t- {}: {}'.format(k, v))
+        print('\t- type: {}'.format(type(body)))
+        print('\t- content: {}'.format(body))
+        print('\t- utf8 content: {}'.format(body.decode('utf-8')))
