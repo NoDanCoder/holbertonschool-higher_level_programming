@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-''' Python script that get 'X-Request-Id' value from response head '''
+''' Python script that send a POST request with data '''
 
 if __name__ == '__main__':
     import urllib.request
