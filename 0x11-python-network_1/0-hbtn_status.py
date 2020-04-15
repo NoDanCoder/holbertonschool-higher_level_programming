@@ -11,8 +11,8 @@ if __name__ == '__main__':
         display = {'type': type(body),
                    'content': body,
                    'utf8 content': body.decode('utf-8')}
-        
+
         print('Body response:')
-        
+
         for k, v in display.items():
             print('\t- {}: {}'.format(k, v))
