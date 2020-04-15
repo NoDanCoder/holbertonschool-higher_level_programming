@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-'''  '''
+''' check status_code of HTTP GET request '''
 
 if __name__ == '__main__':
     import requests
