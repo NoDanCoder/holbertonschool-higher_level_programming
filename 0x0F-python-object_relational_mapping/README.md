@@ -86,4 +86,4 @@ What you should learn from this project:
 ---
 
 ## Author
-* **Jhoan Stiven Zamora Caicedo** - [jzamora5](https://github.com/jzamora5)
+* **Daniel Alejandro Cumaco Robayo** - [Wetgou](https://github.com/wetgou)
